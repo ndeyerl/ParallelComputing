@@ -1,0 +1,107 @@
+.TH GAUSSMASTER 3M "22 Sept. 1985" "Version 1" "Pierre's manual"
+.ds ]W Version 1
+.CM 4
+.SH "NAME"
+GaussMaster \- low-level table generator for Gaussian quadrature.
+.SH "SYNOPSIS"
+.nf
+#include "GaussCore.h"
+.PP
+#define   \s-1CONFLUENT\s0 1
+#define \s-1NOCONFLUENT\s0 0
+.PP
+GaussMaster(n, alpha, beta, conflag, abscis, weight)
+int n;
+double alpha, beta;
+int conflag;
+double abscis[], weight[];
+.fi
+.SH "DESCRIPTION"
+The function computes the zeroes of the classical orthogonal
+polynomials and the associated weights for Gaussian quadrature.
+.PP
+If \fIconflag\fP is \s-1CONFLUENT\s0 the value of \fIbeta\fP
+is ignored and the array \fIabscis\fP is filled with the zeroes
+.if n xk
+.if t \fIx\s-3\dk\u\s0\fP
+of the Laguerre polynomial
+.if n L[n,alpha](x).
+.if t \fIL\s-3\u\z\(*a\d\s0\s-3\dn\u\s0\fP(\fIx\^\fP).
+The array \fIweight\fP is filled with the weights of the Gaussian
+quadrature formula over the interval
+.if n [0, infinity]
+.if t \fB[\fP0, \(if\fB]\fP
+with weight function
+.if n w(x) = x**alpha * exp(-x) / GAMMA(1+alpha).
+.if t \{\
+\fIw\^\fP(\fIx\^\fP) \(eq
+\fIx\s-3\u\(*a\d\s0\|e\s-3\u\-x\d\s0\fP\c
+\|/\|\(*G(1\^\(pl\^\(*a)\|. \}
+Both arrays must have at least \fIn\fP elements.
+.PP
+If \fIconflag\fP is \s-1NOCONFLUENT\s0 the array \fIabscis\fP
+is filled with the zeroes of the shifted Jacobi polynomial
+.if n P[n,alpha,beta](x).
+.if t \{\
+\fIP\s-3\d\zn\u\s0\fP\|\c
+\s-3\u\|(\(*a,\(*b)\d\s0\c
+(\fIx\fP\|). \}
+To avoid loss of significant figures near
+.if n x=1
+.if t \fIx\fP\|\(eq1
+the zeroes are given as
+.if n tk = xk/(1-xk),
+.if t \{\
+\fIt\s-3\dk\u\s0\|\(eq\|\c
+x\s-3\dk\u\s0\|/\|\fP(1\-\fIx\s-3\dk\u\s0\fP\^), \}
+.if n 0 < tk < infinity.
+.if t 0\|<\|\fIt\s-3\dk\u\s0\fP\|<\|\(if.
+The inverse transformation is
+.if n xk = tk/(1+tk).
+.if t \{\
+\fIx\s-3\dk\u\s0\|\(eq\|\c
+t\s-3\dk\u\s0\|/\|\fP(1\(pl\fIt\s-3\dk\u\s0\fP\^). \}
+The array \fIweight\fP is filled with the weights of the Gaussian
+quadrature formula over the interval
+.if n [0, 1]
+.if t \fB[\fP0, 1\fB]\fP
+with weight function
+.if n w(x) = x**alpha * (1-x)**beta / BETA(1+alpha, 1+beta).
+.if t \{\
+\fIw\fP\|(\fIx\fP\|) \(eq
+\fIx\s-3\u\(*a\d\s0\fP\|(1\|\-\|\fIx\fP\|)\s-3\u\(*b\d\s0
+\v'-0.3m'.\v'0.3m'
+\(*G(2\(pl\(*a\(pl\(*b)\|/\|\c
+\(*G(1\(pl\(*a)\^\(*G(1\(pl\(*b). \}
+.PP
+In both cases the normalization constant is chosen to make the
+integral of
+.if n w(x)
+.if t \fIw\fP\|(\fIx\fP\|)
+equal to unity.
+.PP
+.SH "FILES"
+Sources in /usr/asselin/pub/src.
+.br
+Headers in /usr/asselin/pub/include.
+.br
+Library in /usr/asselin/pub/lib/libgquad.a
+.PP
+Please do not copy the files.  Use ln(1) to access the files
+from your directories.
+.SH "SEE ALSO"
+lgamma(3M), ln(1)
+.br
+gaussquad(3M) in /usr/asselin/pub/man
+.SH "DIAGNOSTICS"
+Aborts with error message if
+.if n alpha
+.if t \(*a
+or
+.if n beta
+.if t \(*b
+is less than \-1.
+.SH HISTORY
+.TP
+22-Sep-85  asselin at Carnegie-Mellon University
+Created.

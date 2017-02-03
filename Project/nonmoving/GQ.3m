@@ -1,0 +1,157 @@
+.TH GAUSSQUAD 3M "22 Sept. 1985" "Version 1" "Pierre's manual"
+.ds ]W Version 1
+.CM 4
+.SH "NAME"
+Jacobi, Radau_Jacobi, Lobatto_Jacobi, Laguerre, Radau_Laguerre, Hermite, Odd_Hermite, Even_Hermite \- table generators for Gaussian quadrature.
+.SH "SYNOPSIS"
+.nf
+#include "Jacobi.h"
+.PP
+Jacobi(n, alpha, beta, abscis, weight)
+Radau_Jacobi(n, alpha, beta, abscis, weight, leftw)
+Lobatto_Jacobi(n, alpha, beta, abscis, weight, leftw, rightw)
+.sp
+#include "Laguerre.h"
+.PP
+Laguerre(n, alpha, abscis, weight)
+Radau_Laguerre(n, alpha, abscis, weight, leftw)
+.sp
+#include "Hermite.h"
+.PP
+Odd_Hermite(n, alpha, abscis, weight, w0)
+Even_Hermite(n, alpha, abscis, weight)
+Hermite(n, alpha, abscis, weight)
+.sp
+int n;
+double alpha, beta;
+double abscis[], weight[], *w0, *leftw, *rightw;
+.fi
+.SH "DESCRIPTION"
+The functions compute the abscissas and weight factors of various
+Gaussian quadrature formulas.  Abscissas are returned in the vector
+\fIabscis\fP\^[];  weights are returned in \fIweight\fP\^[] and, where
+applicable, in \(**\fIleftw\fP, \(**\fIrightw\fP and \(**\fIw0\fP.
+The
+vectors must have at least \fIn\fP elements, except in functions
+\fBOdd_Hermite\fP() and \fBEven_Hermite\fP(), for which the minimum
+length is \fBfloor\fP(\fIn\fP/2).
+.PP
+The functions \fBOdd_Hermite\fP() and \fBEven_Hermite\fP() exploit
+the symmetry of the quadrature table to save storage.  Values are
+returned in \fIabscis\fP\|[\fIk\fP\|] and
+\fIweight\fP\|[\fIk\fP\|]
+for \fIk\fP < \fIn\fP/2.
+For each table entry
+(\fIabscis\fP\|[\fIk\fP\|],\ \fIweight\fP\|[\fIk\fP\|]),
+there is an implied entry
+(\-\fIabscis\fP\|[\fIk\fP\|],\ \fIweight\fP\|[\fIk\fP\|]).
+In addition, there
+is an implied entry (0,\ \(**\fIw0\fP\|) in the case of
+\fBOdd_Hermite\fP().
+.PP
+For the "Jacobi" series, the weight function is
+.br
+.if n w(x) = c * x**alpha * (1-x)**beta
+.if t \{\
+\fIw\fP\|(\fIx\fP\|) \(eq
+\fIc\|\v'-0.3m'.\v'0.3m'\|x\|\s-3\u\(*a\d\s0\|\c
+\fP(1\-\fIx\fP\|)\s-3\u\(*b\d\s0 \}
+.br
+over the interval
+.if n 0 <= x <= 1,
+.if t 0\|\(<=\|\fIx\fP\|\(<=\|1,
+with
+.if n alpha, beta > -1.
+.if t \(*a, \(*b > \-1.
+.PP
+For the "Laguerre" series, the weight function is
+.br
+.if n w(x) = c * x**alpha * exp(-x)
+.if t \{\
+\fIw\fP\|(\fIx\fP\|) \(eq
+\fIc\|\v'-0.3m'.\v'0.3m'\|\c
+x\|\s-3\u\(*a\d\s0\|e\|\s-3\u\-x\d\s0\fP \}
+.br
+over the interval
+.if n 0 <= x < +infinity,
+.if t 0\|\(<=\|\fIx\fP\|<\(if,
+with
+.if n alpha > -1.
+.if t \(*a\|>\|\-1.
+.PP
+For the "Hermite" series, the weight function is
+.br
+.if n w(x) = c * abs(x)**alpha * exp(-x**2)
+.if t \{\
+\fIw\fP\|(\fIx\fP\|) \(eq
+\fIc\|\v'-0.3m'.\v'0.3m'\|\c
+\fP|\^\fIx\fP\||\|\s-3\u\(*a\d\s0\|exp(\-\fIx\fP\|\s-3\u2\d\s0) \}
+.br
+over the interval
+.if n -infinity < x < +infinity,
+.if t \-\(if\|<\|\fIx\fP\|<\|\(if,
+.br
+with
+.if n alpha > -1.
+.if t \(*a\|>\|\-1.
+.PP
+In all cases, the normalization constant
+.if n c
+.if t \fIc\fP
+is chosen to make the
+integral of
+.if n w(x)
+.if t \fIw\fP\|(\fIx\fP\|)
+equal to unity.
+To renormalize to
+.if n c = 1.0,
+.if t \fIc\fP\|\(eq\|1.0,
+multiply the weights by the following factors:
+.TP \w'Laguerre:::'u
+Jacobi:
+.if n gamma(1+alpha)*gamma(1+beta)/gamma(2+alpha+beta);
+.if t \{\
+\(*G(1\(pl\(*a)\|\*G(1\(pl\(*b)\|/\|\(*G(1\(pl\(*a\(pl\(*b); \}
+.PD 0u
+.TP
+Laguerre:
+.if n gamma(1+alpha);
+.if t \(*G(1\(pl\(*a);
+.TP
+Hermite:
+.if n gamma((1+alpha)/2).
+.if t \(*G((1\(pl\(*a)/2).
+.PD
+.PP
+If
+.if n alpha or beta
+.if t \(*a or \(*b
+is an integer,
+the factors can be computed
+with arithmetic operations only;  otherwise, the gamma function
+is needed.
+.br
+(Note: there is a log-gamma function in the math library.
+Give the "-lm" linker option to the C compiler.)
+.PP
+.SH "FILES"
+Sources in /usr/asselin/pub/src.
+.br
+Headers in /usr/asselin/pub/include.
+.br
+Library in /usr/asselin/pub/lib/libgquad.a
+.PP
+Please do not copy the files.  Use ln(1) to access the files
+from your directories.
+.SH "SEE ALSO"
+lgamma(3M), ln(1)
+.br
+gaussmaster(3M) in /usr/asselin/pub/man
+.SH "DIAGNOSTICS"
+Aborts with error message if
+.if n alpha or beta <= -1.
+.if t \(*a or \(*b \(<= \-1.
+.SH HISTORY
+.TP
+22-Sep-85  asselin at Carnegie-Mellon University
+Created.
