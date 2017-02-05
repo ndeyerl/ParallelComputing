@@ -1,0 +1,6 @@
+General notes:
+* correct files turned in
+* compiles correctly
+* 'make clean' works correctly
+
+Grade: 100
