@@ -1,0 +1,17 @@
+Not optimized:
+ Result from computation = 2.499023418295e+05
+ Total run time = 7.180373000000e+00
+Optimized by me:
+ Result from computation = 2.499023418295e+05
+ Total run time = 4.789967000000e+00
+Optimized automatically by compiler:
+ Result from computation = 2.499023418295e+05
+ Total run time = 3.504180000000e+00
+Automatic optimization of my hand-optimized code:
+ Result from computation = 2.499023418295e+05
+ Total run time = 2.073693000000e+00
+
+
+When I optimized the code, I only changed the function which was the worst performing (vector_sum, which I changed by switching the loops around so it wasn't unecessarily looping through vectors).  When the compiler optimized the code I think that it optimized each function so that's why the compiler-optimized code ran faster than my hand optimized code.  However, when the compiler automatically optimizes my hand optimized code, it performs even faster than the code that was either just optimized automatically or just hand optimized.  From this I can conclude that the automatic optimizer is doing something behind the scenes other than just moving commands around to make the code perform better, so the combination of hand optimizing and using the automatic optimizer is the best way to go in this case.
+
+
