@@ -1,0 +1,39 @@
+Exercise 1:
+running for 10000 primes
+real 89.86
+user 86.41
+sys 3.51
+
+Example 2:
+running for 200 primes
+real 0.24
+user 0.22
+sys 0.00
+  
+running for 2000 primes
+real 7.72
+user 7.42
+sys 0.30
+  
+running for 20000 primes
+real 260.67
+user 251.23
+sys 9.64
+
+Exercise 2:
+running for 300 primes
+real 0.44
+user 0.42
+sys 0.01
+
+running for 3000 primes
+real 14.40
+user 13.84
+sys 0.56
+
+running for 30000 primes
+real 486.30
+user 468.13
+sys 18.57
+
+I planned on finding the overall complexity of the algorithm by plotting ln(time) vs ln(number of primes) using excel, then taking the complexity to be the slope of the best linear fit. However, my linear best fit line wasn't coming out, so instead I took the slope between two points on the log-log plot by taking (ln(18.57)-ln(9.64))/(ln(30000)-ln(20000)) (rise/run).  This gave me an alpha value of 1.62, resulting in a complexity value of n^(1.62).
