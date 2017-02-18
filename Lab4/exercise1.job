@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH -J ex1_deyerl   # job name
+#SBATCH -o ex1_out.txt  # standard output file
+#SBATCH -e ex1_err.txt  # standard error file   
+#SBATCH -p development # requested queue
+#SBATCH -t 8              # maximum runtime in minutes
+#SBATCH --mail-user ndeyerl@smu.edu # tell email address
+#SBATCH --mail-type=all  # send message for all notifications
+
+# run for first 10000 primes
+time -p ./myjob.sh 10000

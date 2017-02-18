@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -J ex2_deyerl         # job name
-#SBATCH -o ex2_out.txt  # output file name
-#SBATCH -e ex2_err.txt  # error file name
+#SBATCH -o ex2_out.txt  # standard output file 
+#SBATCH -e ex2_err.txt  # standard error file 
 #SBATCH -p parallel-short # requested queue
 #SBATCH --exclusive       # do not share the compute node
 #SBATCH -t 15            # maximum runtime in minutes
