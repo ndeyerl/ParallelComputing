@@ -1,0 +1,7 @@
+#!/bin/bash
+#SBATCH -J myjob          # job name
+#SBATCH -o test1.txt      # output/error file
+#SBATCH -p parallel-short # requested queue
+#SBATCH -t 1              # maximum runtime in minutes
+
+# run for first 100 primes

@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -J ex2_deyerl         # job name
+#SBATCH -o ex2_out.txt  # output file name
+#SBATCH -e ex2_err.txt  # error file name
+#SBATCH -p parallel-short # requested queue
+#SBATCH --exclusive       # do not share the compute node
+#SBATCH -t 15            # maximum runtime in minutes
+#SBATCH --mail-user ndeyerl@smu.edu # tell email address
+#SBATCH --mail-type=all  # send message for all notifications
+
+# first run for 300 primes, placing output in run_300.txt, and timing run
+echo "  "
+echo "running for 300 primes"
+time -p ./myjob.sh 300 > run_300.txt
+
+# run again for 3000 primes,
+echo "  "
+echo "running for 3000 primes"
+time -p ./myjob.sh 3000 > run_3000.txt
+
+# run again for 30000 primes,
+echo "  "
+echo "running for 30000 primes"
+time -p ./myjob.sh 30000 > run_30000.txt

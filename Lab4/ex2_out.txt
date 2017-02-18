@@ -1,0 +1,6 @@
+  
+running for 300 primes
+  
+running for 3000 primes
+  
+running for 30000 primes

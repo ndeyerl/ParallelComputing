@@ -1,0 +1,4 @@
+Using 5000 subintervals:
+  pi approximation is: 3.1415926469231317
+  with relative error: 2.12206e-09
+  total time required: 0.0048759

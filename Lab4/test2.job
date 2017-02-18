@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH -J myjob2         # job name
+#SBATCH -o multitest.txt  # output/error file name
+#SBATCH -p parallel-short # requested queue
+#SBATCH --exclusive       # do not share the compute node
+#SBATCH -t 10             # maximum runtime in minutes
+
+# first run for 200 primes, placing output in run_200.txt, and timing run
+echo "  "
+echo "running for 200 primes"
+time -p ./myjob.sh 200 > run_200.txt
+
+# run again for 2000 primes,
+echo "  "
+echo "running for 2000 primes"
+time -p ./myjob.sh 2000 > run_2000.txt
+
+# run again for 20000 primes,
+echo "  "
+echo "running for 20000 primes"
+time -p ./myjob.sh 20000 > run_20000.txt

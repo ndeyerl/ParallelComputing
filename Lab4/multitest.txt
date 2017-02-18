@@ -1,0 +1,15 @@
+  
+running for 200 primes
+real 0.24
+user 0.22
+sys 0.00
+  
+running for 2000 primes
+real 7.72
+user 7.42
+sys 0.30
+  
+running for 20000 primes
+real 260.67
+user 251.23
+sys 9.64
