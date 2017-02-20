@@ -30,5 +30,6 @@ Assessing complexity:
     students on this lab).  However, if you'd noticed Excel was off,
     at least you could have computed this slope for a few pairs of
     points and averaged the values...
+  -2
   
 Grade: 98
