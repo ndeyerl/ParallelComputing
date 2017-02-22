@@ -1,0 +1,19 @@
+General (turned in correctly):
+* you deleted the two files 'vectors_new.cpp' and 'vectors_old.cpp' --
+  you were not instructed to delete any of your source code.
+  -2
+  
+Optimization (code and commentary):
+* assuming your 'vectors.cpp' file is the 'vectors_new.cpp', then not
+  all functions have been properly optimized (vector_infnorm and
+  vector_dotprod).  I'll note from the instructions: "repeat the
+  optimization process until you are certain that the code has been
+  sufficiently optimized" 
+  -10
+
+* good commentary
+
+Debugging:
+* perfect
+  
+Grade: 88

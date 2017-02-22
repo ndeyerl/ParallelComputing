@@ -1,0 +1,35 @@
+General (turned in correctly): looks good
+  
+Exercise 1:
+* uses 'time' command: yes
+* names job ex1_surname: yes
+* sets input of 10000 primes: yes
+* sets the maximum run time to 8 minutes: yes
+* sends the standard output to a file ex1_out.txt: yes
+* sends the standard error to a file ex1_err.txt: yes
+* sends 'all' notifications to SMU email address: yes
+  
+Exercise 2:
+* names job ex2_surname: yes
+* sets primes to {300, 3000, 30000}: yes
+* redirects output to files run_N.txt where N is # of primes: yes
+* specifies a partition name: yes
+* sets maximum run time to 15 minutes: yes
+* sends stdout to ex2_out.txt: yes
+* sends stderr to ex2_err.txt: yes
+* sends 'all' notifications to SMU email address: yes
+  
+Assessing complexity:
+* summary information myjob.sh runs: yes
+* estimation of overall algorithm complexity: a bit off
+* explanation of approach: a bit off
+  - You have 7 measurements, so why did you only use two of these to
+    estimate the complexity?  From your explanation it's clear that
+    you started off trying to use all of the data but couldn't get
+    Excel to work correctly (this has been a recurring theme among
+    students on this lab).  However, if you'd noticed Excel was off,
+    at least you could have computed this slope for a few pairs of
+    points and averaged the values...
+  -2
+  
+Grade: 98
