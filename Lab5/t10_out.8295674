@@ -1,0 +1,8 @@
+TACC: Starting up job 8295674
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ Run using 10 threads
+ Final rms norm = 0.2045321181289225
+ Total run time = 0.8500561714172363
+ 
+TACC: Shutdown complete. Exiting.
