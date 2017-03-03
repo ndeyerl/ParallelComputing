@@ -3,6 +3,9 @@
    Math 4370/6370
    3 March 2017 */
 
+/* This file defines the structure and operations for the
+ * 2d vector data structure implemented in vec2d.c */
+ 
 #ifndef VEC2D_DEFINED__
 #define VEC2D_DEFINED__
 
@@ -18,7 +21,7 @@
 #define False 0
 
 
-/* This defines a simple arithmetic vector structure */
+/* This defines a simple arithmetic 2d vector structure */
 typedef struct _vec2d {
   long int length1; //m dim of m x n
   long int length2; //n dim of m x n

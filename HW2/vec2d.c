@@ -7,7 +7,11 @@
 #include "vec2d.h"
 
 
-/* This file implements the operations defined in vec2d.h */
+/* This file implements the operations defined in vec2d.h.
+ * The functions are the basis of mathematical operations 
+ * for a 2d vector class/structure. The operations are done 
+ * by iterating over the m "vectors" with n members, so that 
+ * the data structure has 2 indices.  */
 
 /* constructor (initializes values to 0.0) */
 vec2d* vec2dNew(long int m, long int n) {
@@ -26,7 +30,7 @@ vec2d* vec2dNew(long int m, long int n) {
   x->length1 = m;
   x->length2 = n;
   x->data = (double **) malloc( m*sizeof(double*) );
-  for (i=0; i<m; i++)
+  for (i=0; i<m; i++) //allocating space for m vectors n in length
     x->data[i] = (double *) calloc(n, sizeof(double));
   if (x->data == NULL) {
     free(x);
@@ -55,6 +59,8 @@ int vec2dWrite(vec2d* v) {
   }
 
   /* print data to screen and return */
+  /* Note from here onward, all iterations take place over m
+   * vectors and their n members (i=0:m, j=0:n) */
   for (i=0; i<v->length1; i++){
 	  for (j=0; j<v->length2; j++){
 		  printf("  %.16g\n",v->data[i][j]);
@@ -314,10 +320,6 @@ double vec2dMaxNorm(vec2d* x) {
 /******** extra constructors ********/
 
 /* create a vector of linearly spaced data */
-/* fills vector row-wise (ie [0,8]-> 3x3 -> [0 1 2
- *                                           3 4 5
- *                                           6 7 8]
- */
 vec2d* vec2dLinspace(double a, double b, long int m, long int n) {
   vec2d* x;
   long int i;

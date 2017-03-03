@@ -2,6 +2,10 @@
    SMU Mathematics
    Math 4370/6370
    3 March 2017 */
+   
+/* This file defines the structure and operations for the
+ * 2d row major-ordered vector data structure implemented 
+ * in vec2d_b.c */
 
 #ifndef VEC2D_B_DEFINED__
 #define VEC2D_B_DEFINED__
@@ -18,7 +22,7 @@
 #define False 0
 
 
-/* This defines a simple arithmetic vector structure */
+/* This defines a simple arithmetic 2d, row major vector structure */
 typedef struct _vec2d_b {
   long int length1; //m dim of m x n
   long int length2; //n dim of m x n

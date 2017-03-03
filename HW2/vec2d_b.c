@@ -7,7 +7,13 @@
 #include "vec2d_b.h"
 
 
-/* This file implements the operations defined in vec2d_b.h */
+/* This file implements the operations defined in vec2d_b.h.
+ * The functions are the basis of mathematical operations 
+ * for a 2d row major-ordered vector class/structure. The data 
+ * is stored as a 1d array of doubles, so that the data structure 
+ * has 1 index and operations are done by iterating over 
+ * the m "vectors" with n members, so that the (i,j) entry is
+ * stored in index [i*n + j] */
 
 /* constructor (initializes values to 0.0) */
 vec2d_b* vec2d_bNew(long int m, long int n) {
@@ -53,6 +59,8 @@ int vec2d_bWrite(vec2d_b* v) {
   }
 
   /* print data to screen and return */
+  /* Note from here onward, all iterations take place over m
+   * vectors and their n members (i=0:m, j=0:n) */
   for (i=0; i<v->length1; i++){
 	  for (j=0; j<v->length2; j++){
 		  printf("  %.16g\n",v->data[i*v->length2 + j]);
@@ -312,10 +320,6 @@ double vec2d_bMaxNorm(vec2d_b* x) {
 /******** extra constructors ********/
 
 /* create a vector of linearly spaced data */
-/* fills vector row-wise (ie [0,8]-> 3x3 -> [0 1 2
- *                                           3 4 5
- *                                           6 7 8]
- */
 vec2d_b* vec2d_bLinspace(double a, double b, long int m, long int n) {
   vec2d_b* x;
   long int i;

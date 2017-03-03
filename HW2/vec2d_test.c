@@ -2,7 +2,9 @@
    SMU Mathematics
    Math 4370/6370
    3 March 2017 */
-
+   
+/* This file contains routines written to test
+ * the vec2d 2-dimensional vector class. */
 
 /* Inclusions */
 #include <stdlib.h>
@@ -14,7 +16,7 @@
 int GramSchmidt2d(vec2d** X, int numvectors);
 
 
-/* Example routine to test the vec2d "class" */
+/* Routine to test the vec2d "class" */
 int main() {
   int i, j, ier;
 
@@ -97,7 +99,7 @@ int main() {
   
   /* check the LinearSum routine */
   ier = vec2dLinearSum(X[0], -2.0, X[1], 1.0, X[2]);
-  printf("Testing LinearSum, should be [0 -1; 1 0]:\n");
+  printf("Testing LinearSum, should be 0 -1 1 0:\n");
   vec2dWrite(X[0]);
 
   /* check the various scalar output routines */

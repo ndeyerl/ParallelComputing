@@ -3,7 +3,10 @@
    Math 4370/6370
    3 March 2017 */
 
-
+/* This file contains routines written to test
+ * the vec2d_b "2-dimensional", row major-ordered
+ * vector class. */
+ 
 /* Inclusions */
 #include <stdlib.h>
 #include <stdio.h>
@@ -14,7 +17,7 @@
 int GramSchmidt2d_b(vec2d_b** X, int numvectors);
 
 
-/* Example routine to test the vec2d_b "class" */
+/* Routine to test the vec2d_b "class" */
 int main() {
   int i, j, ier;
 
@@ -97,7 +100,7 @@ int main() {
   
   /* check the LinearSum routine */
   ier = vec2d_bLinearSum(X[0], -2.0, X[1], 1.0, X[2]);
-  printf("Testing LinearSum, should be [0 -1; 1 0]:\n");
+  printf("Testing LinearSum, should be 0 -1 1 0:\n");
   vec2d_bWrite(X[0]);
 
   /* check the various scalar output routines */
