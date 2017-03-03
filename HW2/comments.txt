@@ -1,0 +1,22 @@
+Nicole Deyerl
+Homework 2
+Math 6370
+March 3 2017
+
+Storage form 2d:
+dimensions: (10000, 1000)  testing time: 0.663914
+dimensions: (1000, 10000)  testing time: 0.657408
+dimensions: (100, 100000)  testing time: 0.714067
+dimensions: (10, 1000000)  testing time: 0.610597
+dimensions: (100000, 100)  testing time: 0.726455
+dimensions: (1000000, 10)  testing time: 1.04677
+Storage form 2d_b:
+dimensions: (10000, 1000)  testing time: 0.626306
+dimensions: (1000, 10000)  testing time: 0.636463
+dimensions: (100, 100000)  testing time: 0.618486
+dimensions: (10, 1000000)  testing time: 0.623243
+dimensions: (100000, 100)  testing time: 0.638906
+dimensions: (1000000, 10)  testing time: 0.623123
+
+
+Between the two storage forms, I noticed that the testing time for 2d_b is consistent across the board.  It appears that the 2d_b storage form only cares about the total dimension n*m taken up by the vector we're doing calculations on.  However, storage form 2d is inconsistent even though the total dimension n*m was the same for each test.  Storage form 2d cares about the way the vectors are oriented; vectors that are especially large in either n or m (compared to the other dimension) cause the computations to take a lot longer.
