@@ -1,9 +1,8 @@
 /* FILE: omp_getEnvInfo.cpp
-   DESCRIPTION:
-      OpenMP Example - Get Environment Information - C++ Version
-      The master thread queries and prints selected environment information.
-   AUTHOR: Blaise Barney  7/06
-   UPDATED: Daniel R. Reynolds (updated to C++), 1/13/2013 */
+   Nicole Deyerl
+   Math6370 Spring 2017
+   OpenMP file written to get info about the OpenMP environment, modified   from Blaise barney's Hello World OpenMP example which was updated to c++
+by Dan Reynolds.*/
 
 #include <omp.h>
 #include <stdio.h>
@@ -12,38 +11,34 @@
 int main (int argc, char *argv[]) {
 
   // local variables
-  int nthreads, tid, procs, maxt, inpar, dynamic, nested;
+  int nprocs, nthreads, mthreads, ifpar, ifdpar, ifnpar;
 
-  // Start parallel region
+  // Fork a team of threads giving them their own copies of variables
 # pragma omp parallel private(nthreads, tid)
   {
 
-    // Obtain thread number
-    tid = omp_get_thread_num();
-
     // Only master thread does this
     if (tid == 0) {
-      printf("Thread %i getting environment info...\n", tid);
+      nprocs = omp_get_num_procs();
+      printf("Number of processors = %i\n", nprocs);
 
-      // Get environment information
-      procs    = omp_get_num_procs();
       nthreads = omp_get_num_threads();
-      maxt     = omp_get_max_threads();
-      inpar    = omp_in_parallel();
-      dynamic  = omp_get_dynamic();
-      nested   = omp_get_nested();
-
-      // Print environment information
-      printf("Number of processors = %i\n", procs);
       printf("Number of threads = %i\n", nthreads);
-      printf("Max threads = %i\n", maxt);
-      printf("In parallel? = %i\n", inpar);
-      printf("Dynamic threads enabled? = %i\n", dynamic);
-      printf("Nested parallelism supported? = %i\n", nested);
+
+      mthreads = omp_get_max_threads();
+      printf("Max number of threads available = %i\n", mthreads);
+
+      ifpar = omp_in_parallel();
+      printf("In parallel region = %i\n",ifpar);
+
+      ifdpar = omp_get_dynamic();
+      printf("Dynamic threads enabled = %i\n",ifdpar);
+
+      ifnpar = omp_get_nested;
+      printf("Nested parallelism supported = %i\n",idnpar);
     }
 
-  }  // end parallel region
-
+  } // All threads join master thread and disband
+  
   return 0;
 }  // end main
-
