@@ -1,9 +1,8 @@
-/* FILE: omp_bug5.cpp
-   DESCRIPTION:
-      This program fails due to incorrectly scoped variables.  
-      Compare to omp_orphan.c.
-   AUTHOR: Blaise Barney  6/05
-   UPDATED: Daniel R. Reynolds (updated to C++), 1/13/2013 */
+/* 
+ * Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * Failed compilation bug by Blaise Blarney and Dan Reynolds, fixed 
+ * by changing how program works to model omp_orphan.cpp by DR. */
 
 #include <omp.h>
 #include <stdio.h>

@@ -1,8 +1,8 @@
-/* FILE: omp_bug2.cpp
-   DESCRIPTION:
-      Another OpenMP program with a bug. 
-   AUTHOR: Blaise Barney 
-   UPDATED: Daniel R. Reynolds (updated to C++), 1/13/2013 */
+/* 
+ * Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * Buggy file by Blaise Blarney and Dan Reynolds, fixed using Dan 
+ * Reynolds' hints.  */
 
 #include <omp.h>
 #include <stdio.h>
@@ -15,7 +15,7 @@ int main (int argc, char *argv[]) {
   float total;
 
   // Spawn parallel region 
-# pragma omp parallel private(tid)
+# pragma omp parallel private(tid) //made tid private
   {
     // Obtain thread number
     tid = omp_get_thread_num();
@@ -33,7 +33,7 @@ int main (int argc, char *argv[]) {
 
     // do some work
     total = 0.0;
-#   pragma omp for schedule(dynamic,10) private(total)
+#   pragma omp for schedule(dynamic,10) private(total) //made total private
     for (i=0; i<1000000; i++)  total = total + i*1.0;
 
     printf("Thread %i is done! Total = %g\n", tid, total);

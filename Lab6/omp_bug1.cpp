@@ -1,11 +1,8 @@
-/* FILE: omp_bug1.cpp
-   DESCRIPTION:
-   This example attempts to show use of the parallel for construct.  
-   However it will generate errors at compile time.  Try to determine 
-   what is causing the error.  See omp_bug1fix.cpp for a corrected 
-   version.
-   AUTHOR: Blaise Barney  5/99
-   UPDATED: Daniel R. Reynolds (updated to C++), 1/13/2013 */
+/* 
+ * Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * File exhibiting errors at compile time by Blaise Blarney and Dan
+ * Reynolds, fixed using omp_bug1fix.cpp as a guide. */
 
 #include <omp.h>
 #include <stdio.h>

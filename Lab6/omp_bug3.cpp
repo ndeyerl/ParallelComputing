@@ -1,8 +1,8 @@
-/* FILE: omp_bug3.cpp
-   DESCRIPTION:
-      This very simple program causes a segmentation fault.
-   AUTHOR: Blaise Barney  01/09/04
-   UPDATED: Daniel R. Reynolds (Updated to C++), 1/13/2013 */
+/* 
+ * Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * File causing segmentation fault error by Blaise Blarney and Dan
+ * Reynolds, fixed by running with BASH file provided by DR.  */
 
 #include <omp.h>
 #include <stdio.h>

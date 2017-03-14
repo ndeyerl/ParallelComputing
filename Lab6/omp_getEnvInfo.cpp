@@ -1,8 +1,9 @@
 /* FILE: omp_getEnvInfo.cpp
    Nicole Deyerl
    Math6370 Spring 2017
-   OpenMP file written to get info about the OpenMP environment, modified   from Blaise barney's Hello World OpenMP example which was updated to c++
-by Dan Reynolds.*/
+   OpenMP file written to get info about the OpenMP environment, modified   
+   from Blaise barney's Hello World OpenMP example which was updated to 
+   c++ by Dan Reynolds.*/
 
 #include <omp.h>
 #include <stdio.h>

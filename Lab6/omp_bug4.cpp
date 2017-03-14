@@ -1,9 +1,8 @@
-/* FILE: omp_bug4.cpp
-   DESCRIPTION:
-      Using SECTIONS, two threads initialize their own array and then 
-      add it to the other's array, however a deadlock occurs.
-   AUTHOR: Blaise Barney  01/29/04
-   UPDATED: Daniel R. Reynolds (updated to C++), 1/13/2013 */
+/* 
+ * Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * File causing deadlock (program gets stuck at runtime) by Blaise 
+ * Blarney and Dan Reynolds, fixed using omp_bug4fix.cpp provided by DR  */
 
 #include <omp.h>
 #include <stdio.h>
