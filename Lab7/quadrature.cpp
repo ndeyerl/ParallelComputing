@@ -1,7 +1,10 @@
-/* Daniel R. Reynolds
-   SMU Mathematics
-   Math 4370/6370
-   17 February 2015 */
+/* Nicole Deyerl
+ * MATH 6370 Spring 2017
+ * OpenMP enabled program designed to approximate the double integral of
+ * f using a composite Gauss quadrature rule with accuracy O(h^16).  
+ * Original version worked in serial, this version has been modified so 
+ * that it is optimized to work in OpenMP as well by fixing some bugs.
+ */
 
 // Inclusions 
 #include <stdlib.h>
@@ -68,6 +71,7 @@ int main(int argc, char* argv[]) {
 
   // perform integration over n intervals in each direction
 # pragma omp parallel for collapse(2) default(shared) private(i,j,k,l,x,y,a,b)
+  // bug was here ^ changed scope of x, y, a, b to private
   for (i=0; i<n; i++) {
     for (j=0; j<n; j++) {
 
