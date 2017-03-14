@@ -18,7 +18,7 @@ int main (int argc, char *argv[]) {
   // local variables
   int i, chunk, tid;
   float a[N], b[N], c[N];
-
+  char first_time;
   // Some initializations
   for (i=0; i < N; i++)  a[i] = b[i] = i * 1.0;
   chunk = CHUNKSIZE;
