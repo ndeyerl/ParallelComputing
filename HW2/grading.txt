@@ -1,0 +1,23 @@
+Files:  perfect
+  
+Compiling your tests:  perfect
+  
+Compiling my tests:  perfect
+  
+Running grade_vec2d.exe:  perfect
+  
+Running grade_vec2d_b.exe:  perfect
+  
+Comments on performance:  
+* your comments are almost correct; you say that "vectors that are
+  especially large in either n or m (compared to the other dimension) 
+  cause the computations to take a lot longer" but your data indicates
+  otherwise, in that the extreme case of m << n was the fastest of all
+  tests.
+  
+  -2
+
+Files (see comments in PDF):  
+  
+Grade:  98
+  
