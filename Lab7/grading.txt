@@ -1,0 +1,45 @@
+Files:  
+* You included some files containing DDT error messages in with your
+  code for the lab.  It is typically not considered "good practice" to
+  check error log files into source code repositories (unless you want
+  to save them for some specific reason).
+  
+Building:  perfect
+  
+Debugged code:  
+* your code only works correctly for 1 thread.  When running with more
+  threads it gives the wrong answer, and the runtimes do not speed up
+  as they should:
+
+     run with 1 threads:
+      computed F = 0.1164903096009279
+          true F = 0.116490309600926
+           error = 1.9429e-15
+         runtime = 26.702
+     
+     run with 2 threads:
+      computed F = 0.08535948401289363
+          true F = 0.116490309600926
+           error = 0.031131
+         runtime = 19.857
+     
+     run with 4 threads:
+      computed F = 0.06666012842129099
+          true F = 0.116490309600926
+           error = 0.04983
+         runtime = 12.983
+     
+     run with 8 threads:
+      computed F = 0.03089010375168832
+          true F = 0.116490309600926
+           error = 0.0856
+         runtime = 12.622
+     
+     run with 12 threads:
+      computed F = 0.02025270347618327
+          true F = 0.116490309600926
+           error = 0.096238
+         runtime = 11.291
+  
+Grade:  70
+  
