@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH -A SMU-Math-6370                 # charge account
+#SBATCH -J p16_s.job                     # job name
+#SBATCH -o output_stampede_16.txt        # output file
+#SBATCH -N 1                             # requested nodes
+#SBATCH -n 16                            # requested MPI tasks
+#SBATCH --ntasks-per-node=16             # maximum task load per node
+#SBATCH -p normal                        # requested queue
+#SBATCH -t 1                             # maximum runtime in minutes
+
+ibrun ./driver.exe
+
