@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -J p2_mf.job                # job name
+#SBATCH -o output_maneframe_2.txt   # output/error file
+#SBATCH -n 2                        # requested MPI tasks
+#SBATCH -p parallel-short           # requested queue
+#SBATCH -t 1                        # maximum runtime in minutes
+#SBATCH --exclusive                 # do not share nodes
+
+srun ./driver.exe
+
