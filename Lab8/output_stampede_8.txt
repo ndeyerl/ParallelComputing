@@ -1,0 +1,8 @@
+TACC: Starting up job 8396984
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+ starting MPI with 8 processes
+ dot-product = 1.666666666667e+00
+     runtime = 4.086971282959e-03
+ 
+TACC: Shutdown complete. Exiting.
