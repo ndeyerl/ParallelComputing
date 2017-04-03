@@ -1,12 +1,21 @@
                          Maneframe runtime    Stampede runtime
-1tasks (1node)           4.266214370728e-02
-2tasks (1node)           2.199101448059e-02
-4tasks (1node)           1.157712936401e-02
-8tasks (1node)           5.841016769409e-03
-8tasks (4cores/2nodes)   1.016902923584e-02    -
-16tasks (8cores/node)    3.432989120483e-03    
-16tasks (16cores/node)   -
-32tasks (8cores/node)    2.493858337402e-03    -
-32tasks (16cores/node)   -
-64tasks (8cores/node)    7.400989532471e-03    -
-64tasks (16cores/node)   -
+1tasks (1node)           4.266214370728e-02   1.017403602600e-02
+2tasks (1node)           2.199101448059e-02   6.446123123169e-03
+4tasks (1node)           1.157712936401e-02   4.086971282959e-03
+8tasks (1node)           5.841016769409e-03   4.086971282959e-03
+8tasks (4cores/2nodes)   1.016902923584e-02   -
+16tasks (8cores/node)    3.432989120483e-03   7.083106040955e-02
+16tasks (16cores/node)   -                    2.633094787598e-03
+32tasks (8cores/node)    2.493858337402e-03   -
+32tasks (16cores/node)   -                    7.399296760559e-02
+64tasks (8cores/node)    7.400989532471e-03   -
+64tasks (16cores/node)   -                    1.083810329437e-01
+
+For the identical runs with fewer tasks (1, 2, 4, 8 tasks on 1 node), Stampede appears to outperform 
+Maneframe.  
+Something interesting is that on Maneframe, as we added tasks the total runtime
+decreased by an order of 10.  On Stampede, for the tests with more tasks (32 and
+64 tasks) the runtime increased by orders of 10.
+When splitting cores between nodes on Maneframe, the runtime slowed down compared
+to the runtime for filling one node with the maximum number of cores/tasks.
+However, splitting cores/tasks between nodes on Stampede sped up the total runtime.
