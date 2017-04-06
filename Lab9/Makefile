@@ -7,12 +7,12 @@
 #  18 March 2015
 ###################################################################
 
-MPICC = mpicc
-CFLAGS = -O2
+MPICXX = mpicxx
+CXXFLAGS = -O2
 
 
-quadrature.exe : quadrature.c
-	$(MPICC) $(CFLAGS) $^ -lm -o $@
+quadrature.exe : quadrature.cpp
+	$(MPICXX) $(CXXFLAGS) $^ -lm -o $@
 
 
 clean :
