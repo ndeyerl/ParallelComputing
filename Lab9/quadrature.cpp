@@ -86,14 +86,16 @@ int main(int argc, char* argv[]) {
 
   // initialize local result
   F = 0.0;
+      // in each sub-square, evaluate at all 64 points and combine results
+      for (k=0; k<nodes; k++) {
+        for (l=0; l<nodes; l++) {
+
 
   // perform integration over n intervals in each direction
   for (i=is; i<ie; i++) {
     for (j=js; j<je; j++) {
 
-      // in each sub-square, evaluate at all 64 points and combine results
-      for (k=0; k<nodes; k++) {
-        for (l=0; l<nodes; l++) {
+
 
           // location of sub-square center
           x = h * (i + 0.5);
