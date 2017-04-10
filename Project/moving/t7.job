@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH -A SMU-Math-6370    # account name
-#SBATCH -J q_omp_t1    # job name
-#SBATCH -o t1_out.%j        # output file
+#SBATCH -J q_omp_t7    # job name
+#SBATCH -o t7_out.%j        # output file
 #SBATCH -N 1                # total nodes requested
 #SBATCH -n 1                # total MPI tasks requested
 #SBATCH -p serial           # queue name
-#SBATCH -t 01:00:00         # total time requested <hh:mm:ss>
+#SBATCH -t 10:00:00         # total time requested <hh:mm:ss>
 
 export OMP_NUM_THREADS=1
-ibrun ./quadjac -N=10 -M=20
+ibrun ./quadjac -N=20 -M=40
 
