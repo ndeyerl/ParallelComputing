@@ -80,9 +80,11 @@ int main(int argc, char* argv[]) {
   ie = ((int) (1.0*n/numprocs))*(myid+1);
   if (myid == numprocs-1)  ie = n;
 
-  js = ((int) (1.0*n/numprocs))*myid;
-  je = ((int) (1.0*n/numprocs))*(myid+1);
-  if (myid == numprocs-1)  je = n;
+  //error: loops were only calculating over 1/2 the domain,
+  //j needs to run from 0 to 1000
+  //js = ((int) (1.0*n/numprocs))*myid;
+  //je = ((int) (1.0*n/numprocs))*(myid+1);
+  //if (myid == numprocs-1)  je = n;
 
   // initialize local result
   F = 0.0;
@@ -93,7 +95,7 @@ int main(int argc, char* argv[]) {
 
   // perform integration over n intervals in each direction
   for (i=is; i<ie; i++) {
-    for (j=js; j<je; j++) {
+    for (j=0; j<n; j++) {
 
 
 
