@@ -7,7 +7,7 @@
 #include "Laguerre.h"
 #include "Jacobi.h"
 #include "Hermite.h"
-
+#include "get_time.h"
 
 //implementation: make quadjac
 //		./quadjac -p= -N= -M=
@@ -47,6 +47,9 @@ void main(int nargs, char *argv[]) {
   int p, d, dd, i, j, k, info, nVtx, nPnls, nRhs = 1, test=0, dmax, pnlsX, pnlsY, Xidxv0, Xidxv1, Yidxv0, Yidxv1, idxv0, idxv1, *pvt, n, m;
   char trans='N';
 
+//changes for omp file
+  double alloctime, inittime, runtime, matrixtime, lintime;
+  double stime1, stime2, ftime1, ftime2;
 
   dmax = 10; //max number of time steps
   nVtx = 5;//number of vertices
@@ -78,6 +81,9 @@ void main(int nargs, char *argv[]) {
   nPnls = nVtx; //number of panels, -1 if panels dont wrap around
   h = tmax/dmax; //time step size
   printf("N = %d  M = %d  T = %f  p = %d \n",nVtx, dmax, tmax, p);
+
+  //start allocation timer
+  stime1 = get_time();
 
   xLeg = (double*)malloc( p*sizeof(double) );
   wLeg = (double*)malloc( p*sizeof(double) );
@@ -143,6 +149,12 @@ void main(int nargs, char *argv[]) {
 //allocate space for errors
   double err[dmax+1];
 
+  //end allocation timer
+  ftime1 = get_time();
+  alloctime = ftime1 - stime1;
+
+  //start main computation timer
+  stime1 = get_time();
 
 //build panels
   for(i = 0; i <= dmax + 1; i++){
@@ -210,6 +222,8 @@ void main(int nargs, char *argv[]) {
     velall[i] = vel;
 
 
+    //start timer for matrix generation
+    stime2 = get_time();
 
     //generate V, K and solve 
 
@@ -246,6 +260,13 @@ void main(int nargs, char *argv[]) {
 */
     }//end m-loop
 
+    //end timer for matrix generation
+    ftime2 = get_time();
+    matrixtime = ftime2-stime2;
+
+    //start timer for linear alg solve part
+    stime2 = get_time();
+
     //history
     for(k = 0; k < nVtx; k++){
       rhs[k] = -.5*ftilde[i][k];  
@@ -270,12 +291,17 @@ void main(int nargs, char *argv[]) {
     for(k = 0; k < nVtx; k++){
       solnrhs[i][k] = rhs[k]; 
     }
-
+    
+    //end timer for linear solver part
+    ftime2 = get_time();
+    lintime = ftime2 - stime2;
+/*
     //print out solution
     printf("solnrhs[%d]\n",i);
     for(k = 0; k < nPnls; k++){
       printf("solnrhs[%d][%d] = %.16f \n",i,k,solnrhs[i][k]); 
     }
+*/
 
 //error calculations
 
@@ -288,11 +314,11 @@ void main(int nargs, char *argv[]) {
       }
       dubdn[i] = z;
 
-
+/*
     for(j = 0; j < nPnls; j++){
        printf("dubdn[%d][%d] = %.16f \n",i,j,dubdn[i][j]);
     }
-
+*/
     y = (double *)calloc(nVtx, sizeof(double));
     for(j = 0; j < nVtx; j++){
       y[j] = fabs(solnrhs[i][j]-dubdn[i][j]);
@@ -305,8 +331,8 @@ void main(int nargs, char *argv[]) {
     }//end i-loop
 
 
-  printf("N = %d  M = %d  p = %d\n",nVtx,dmax,p);
-  printf("maxerr = %.10f\n",maxerr);
+  //printf("N = %d  M = %d  p = %d\n",nVtx,dmax,p);
+  //printf("maxerr = %.10f\n",maxerr);
 
   //l2 error
   l2error = 0.0;
@@ -317,7 +343,16 @@ void main(int nargs, char *argv[]) {
       l2error += s;
     }
   }
+
+  //end main computation timer
+  ftime1 = get_time();
+  runtime = ftime1 - stime1;
+
   printf("l2 error = %.10f\n",sqrt(l2error));
+  printf("    alloc time = %.2e\n",alloctime);
+  printf("      run time = %.2e\n",runtime);
+  printf("   matrix time = %.2e\n",matrixtime);
+  printf("      lin time = %.2e\n",lintime);
 
 //free allocated variables
 //  free(y);
