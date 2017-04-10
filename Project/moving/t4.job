@@ -4,5 +4,5 @@
 #SBATCH -p serial           # queue name
 #SBATCH -t 60         # total time requested <hh:mm:ss>
 
-ibrun ./quadjac -N=80 -M=20
+./quadjac -N=80 -M=20
 

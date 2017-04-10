@@ -4,5 +4,5 @@
 #SBATCH -p highmem-medium           # queue name
 #SBATCH -t 4320         # total time requested <hh:mm:ss>
 
-ibrun ./quadjac -N=80 -M=160
+./quadjac -N=80 -M=160
 
