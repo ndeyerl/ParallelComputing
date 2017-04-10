@@ -1,0 +1,12 @@
+N = 320  M = 20  T = 1.000000  p = 5 
+l2 error = 0.2653142746
+    alloc time = 0.00e+00
+      run time = 1.51e+03
+   matrix time = 1.37e+02
+      lin time = 1.00e-02
+N = 320  M = 20  T = 1.000000  p = 5 
+l2 error = 0.2653142746
+    alloc time = 0.00e+00
+      run time = 1.51e+03
+   matrix time = 1.39e+02
+      lin time = 1.00e-02

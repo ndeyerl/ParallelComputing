@@ -1,0 +1,6 @@
+N = 40  M = 20  T = 1.000000  p = 5 
+l2 error = 0.2410385568
+    alloc time = 0.00e+00
+      run time = 2.37e+01
+   matrix time = 2.17e+00
+      lin time = 0.00e+00
