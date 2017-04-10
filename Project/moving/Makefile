@@ -19,8 +19,8 @@ libgaussq.a: $(OBJS)
 	$(AR) rv libgaussq.a $(OBJS)
 	$(RANLIB) libgaussq.a
 
-quadjac:  quadjac.o panelIA.o 
-	gcc $(CFLAGS) -o quadjac quadjac.o panelIA.o libgaussq.a  -llapack -lm
+quadjac:  quadjac.o panelIA.o get_time.o
+	gcc $(CFLAGS) -o quadjac quadjac.o panelIA.o get_time.o libgaussq.a  -llapack -lm
 
 
 
