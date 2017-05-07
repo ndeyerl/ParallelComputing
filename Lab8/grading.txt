@@ -1,0 +1,20 @@
+Files:  
+* You included backup files (p1_mf.job~, p8_mf.job~ and results.txt~)
+  in your repository.  Backup files should be deleted before
+  committing a folder to a source code repository.
+
+  -2
+
+Outputs:  all are present
+  
+Submission files:
+* None are present.  The lab instructions clearly
+  stated that these should be named uniquely so that they would be
+  easier to turn in; why did you delete them?
+
+  -5
+  
+Results and discussion:  good discussion
+  
+Grade:  93
+  
