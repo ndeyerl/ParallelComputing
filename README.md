@@ -1,0 +1,1 @@
+Code for parallel computing from MATH 6370 at SMU (Spring 2017 with Dan Reynolds).  Code is in a mixture of C and C++.  Did some prototyping in Matlab.  Coursework involved implementing, debugging and testing mathematical algorithms in parallel (OpenMP, MPI) on local and nonlocal server nodes (Mustang 2 at SMU, Stampede at UT Austin).
